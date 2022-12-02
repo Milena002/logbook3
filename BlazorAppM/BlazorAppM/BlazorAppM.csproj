@@ -28,7 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Pages\ProductList.razor" />
+    <None Include="Shared\ProductList.razor" />
   </ItemGroup>
 
 </Project>
