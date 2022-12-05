@@ -1,5 +1,6 @@
 using BlazorAppM.Areas.Identity;
 using BlazorAppM.Data;
+using BlazorAppM.Services;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Web;
@@ -20,6 +21,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
 
+builder.Services.AddScoped<CartService>();
 
 var app = builder.Build();
 

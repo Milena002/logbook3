@@ -1,0 +1,37 @@
+﻿@using BlazorAppM.Models
+@using BlazorAppM.Services
+@using BlazorAppM.Shared
+@inject CartService CartService
+
+<div class="card w-50">
+    <div class="card-header">
+        AirPods Shop 🛍️
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">@product.Id: @product.Name</h5>
+        <p class="card-text">@product.Description</p>
+        <blockquote class="card-text"><strong>£@product.Price</strong></blockquote>
+        <p><img src="@product.Photo" width="180" /></p>
+        @if (DisplayBuyButton)
+        {
+            <button class="btn btn-primary" type="button" @onclick="()=> Buy(product.Id)"> Buy </button>
+        }
+    </div>
+</div>
+
+
+
+
+@code {
+    [Parameter]
+    public Product product { get; set; } = new Product();
+
+    [Parameter]
+    public bool DisplayBuyButton { get; set; } = true;
+
+    private void Buy(int productId)
+    {
+        CartService.AddProductToCart(productId);
+    }
+
+}

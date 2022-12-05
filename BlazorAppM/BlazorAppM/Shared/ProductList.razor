@@ -1,15 +1,9 @@
-﻿@using BlazorAppM.Models
-@using BlazorAppM.Services
+﻿@*Ui section*@
 
-@*Ui section*@
-
- <h3>ProductList</h3>
 
  @foreach(Product product in Products)
  {
-     <h4>@product.Id: @product.Name</h4>
-     <p>@product.Description</p>
-    <p>£@product.Price</p>
+     <ProductView product="product"></ProductView>
  }
     
  @* code section*@
@@ -19,6 +13,5 @@
     [Parameter]
     public List<Product> Products { get; set; } = ProductService.Products.ToList();
 
-    [Parameter]
-    public bool DisplayBuyButton { get; set; } = false;
+  
 }

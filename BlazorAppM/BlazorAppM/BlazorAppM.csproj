@@ -25,10 +25,16 @@
 
   <ItemGroup>
     <_ContentIncludedByDefault Remove="Pages\ProductList.razor" />
+    <_ContentIncludedByDefault Remove="Shared\ProductView.razor" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="Shared\ProductList.razor" />
+    <None Include="Shared\ProductView.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Shared\ProductView.razor" />
   </ItemGroup>
 
 </Project>
