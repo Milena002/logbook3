@@ -1,0 +1,54 @@
+﻿@using BlazorAppM.Services
+@*Ui section*@
+
+<h3> You have @Items.Count items in your cart 🛒</h3>
+
+<div class="col-10">
+    <table class="table table-bordered">
+    <thead>
+        <tr>
+        <th>Name</th>
+        <th class="text-center">Quantity</th>
+        <th class="text-center">Price</th>
+        <th class="text-center">Cost</th>
+        <th>Action</th>
+       </tr>
+     </thead>
+     <tbody>
+    @foreach (ShoppingItem item in Items)
+    {
+                if (item.Quantity > 0)
+                {
+                    <ItemView Item="@item" OnQuantityChanged="OnQuantityChanged"></ItemView>
+                }
+    }
+     </tbody>
+     <tfoot>
+         <tr>
+             <th colspan="3" style="text-align:end">Total Cost</th>
+             <th>@totalCost.ToString("c")</th>
+         </tr>
+     </tfoot>
+    </table>
+</div>
+@* code section*@
+
+@code {
+    private Decimal totalCost{ get; set; }
+    [EditorRequired]
+    [Parameter]
+    public List<ShoppingItem> Items { get; set; } = CartService.SelectedItems.ToList();
+
+    protected override void OnInitialized()
+    {
+        OnQuantityChanged();
+    }
+
+    public void OnQuantityChanged()
+    {
+        totalCost = @Items.Sum(item => item.PurchasePrice * item.Quantity);
+    }
+
+
+}
+

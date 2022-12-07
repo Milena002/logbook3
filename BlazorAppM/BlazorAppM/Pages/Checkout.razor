@@ -1,9 +1,0 @@
-﻿@page "/Checkout"
-@inject CartService CartService
-
-<h1> You have @CartService.SelectedItems.Count in cart</h1>
-<ProductList Products="CartService.SelectedItems"></ProductList>
-
-@code {
-
-}
